@@ -2,18 +2,63 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src="dist/main.js"></script>
+	<title>To Do Org</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="main.js"></script>
 </head>
 <body>
-	<header>
-		<nav></nav>
-	</header>
-	
-	<div id="content">
-		
+	<div id="top-bar">
+		<h1>To Do List Organizer</h1>
+		<button id="new-project-button">+ New Project</button>
 	</div>
 
+	<div id="content">
+		<div id="side-bar">
+
+			<h3>Open Projects</h3>
+
+			<table>
+				<tr>
+					<th>completed</th>
+					<th>project</th>
+					<th>Priority</th>
+					<th>Due Date</th>
+					<th>Delete</th>
+				</tr>
+			</table>
+
+		</div>
+		
+		<div id="current-project">
+			<button class="edit-project">EDIT</button>
+
+			<h2 class="projectTitle">Project Title</h2>
+
+			<p class="dueDate">10/31/19</p>
+
+			<p class="about">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quidem, omnis obcaecati rem. Illo, suscipit distinctio veniam saepe mollitia nisi nulla, iure tempora culpa voluptate in, ad, maxime eaque iusto!</p>
+
+			<div class="sublists">
+				<ul class="sublist">
+					<li class="sublist">
+						<input type="checkbox" class="not-finished sublistItem">
+						<h4 class="sublistItem">Sublist One</h4>
+					</li>
+					<li class="sublist">
+						<input type="checkbox" class="not-finished sublistItem">
+						<h4 class="sublistItem">Sublist two</h4>
+					</li>
+					<li class="sublist">
+						<input type="checkbox" class="not-finished sublistItem">
+						<h4 class="sublistItem">Sublist three</h4>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+	
 	<footer></footer>
 </body>
 </html>
