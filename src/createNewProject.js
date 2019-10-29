@@ -1,22 +1,9 @@
-const createForm = () => {
-  // dynamically create the form
+const createNewProject = () => {
   // currently selected project should populate in the input sections
   // dynamically creates the form when the 'edit' button is pressed
   // if only one project is in the allOpenProjects array then automatically go to an editable form
 
-const form = document.querySelector('#new-project-form');
-
-  function mainForm () {
-    return `
-        <input type="text" id="form-header" class="form-input" value="default project">
-
-        <input type="date" id="form-due-date" class="form-input">
-
-        <textarea name="" id="form-about" cols="30" rows="10" class="form-input"></textarea>
-
-        <label for="pages" class="form hide-form">Pages:</label>
-      `
-  }
+  const form = document.querySelector('#new-project-form');
 
   // Project Title (required)
   const formHeaderLabel = document.createElement('label');
@@ -88,4 +75,4 @@ const form = document.querySelector('#new-project-form');
 
 }
 
-export { createForm }
+export { createNewProject }

@@ -1,9 +1,9 @@
 //import { createProject } from './createProject.js'
-import { createForm } from './createForm.js'
+import { createNewProject } from './createForm.js'
 
 
 const editButton = document.querySelector('.edit-project');
-/*
+
 const allOpenProjects = [
   {
     projectId: = 0,
@@ -12,7 +12,7 @@ const allOpenProjects = [
     priority: = false,
     aboutProject: = 'about this project',
     projectIsComplete: = false),
-    sublist: = 
+    sublist: = [
     [
       {
         sublistId: = 0,
@@ -31,8 +31,8 @@ const allOpenProjects = [
       }
     ]
   }
-]*/
+]
 
 // Event listeners
-editButton.addEventListener('click', createForm);
+editButton.addEventListener('click', createNewProject);
 
