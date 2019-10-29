@@ -1,24 +1,10 @@
-/* 
-To do should have
-  start with a default project
-  title
-  description
-  dueDate
-  priority
-  notes
-  a subchecklist
+//import { createProject } from './createProject.js'
+import { createForm } from './createForm.js'
 
-Functionality
-  create a new project
-  Mark complete project compelete
-  Unmark project complete back to to do
-  delete the project
-  Local Storage 
-*/
 
-import { createProject } from './createProject.js'
-
-allOpenProjects = [
+const editButton = document.querySelector('.edit-project');
+/*
+const allOpenProjects = [
   {
     projectId: = 0,
     projectTitle: = 'default project',
@@ -45,7 +31,8 @@ allOpenProjects = [
       }
     ]
   }
-]
+]*/
 
-
+// Event listeners
+editButton.addEventListener('click', createForm);
 

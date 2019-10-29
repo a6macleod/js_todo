@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>To Do Org</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="main.js"></script>
+	
 </head>
 <body>
 	<div id="top-bar">
@@ -28,12 +28,21 @@
 			</table>
 
 		</div>
-		
+
 		<div id="current-project">
+
 			<button class="edit-project">EDIT</button>
 
-			<h2 class="projectTitle">Project Title</h2>
+			<form id="new-project-form">
+<!--
+				<input type="text" id="form-header" class="form-input" value="default project">
 
+				<input type="date" id="form-due-date" class="form-input">
+
+				<textarea name="" id="form-about" cols="30" rows="10" class="form-input"></textarea>
+-->
+			</form>
+			<h2 class="projectTitle">Project Title</h2>
 			<p class="dueDate">10/31/19</p>
 
 			<p class="about">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quidem, omnis obcaecati rem. Illo, suscipit distinctio veniam saepe mollitia nisi nulla, iure tempora culpa voluptate in, ad, maxime eaque iusto!</p>
@@ -53,12 +62,13 @@
 						<h4 class="sublistItem">Sublist three</h4>
 					</li>
 				</ul>
-			</div>
+			</div> <!-- end sublist -->
 
-		</div>
+		</div> <!-- end current-project -->
 
 	</div>
 	
 	<footer></footer>
 </body>
+<script src="main.js"></script>	
 </html>

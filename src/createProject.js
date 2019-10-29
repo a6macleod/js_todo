@@ -12,6 +12,20 @@ function createProject = () => {
 // any number of sublists
 // sublistIsComplete
 
+  function createProjectId() {
+    // code for a new project ID
+  }
+
+  const createProject = (projectTitle, dueDate, priority, aboutProject) => {
+      projectId: = createProjectId(),
+      projectTitle: = 'default project',
+      dueDate: = "10/31/2019",
+      priority: = false,
+      aboutProject: = 'about this project',
+      projectIsComplete: = false,
+      sublist: = []
+    };
+
 }
 
 export { createProject };
