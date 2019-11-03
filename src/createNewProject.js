@@ -1,7 +1,12 @@
 const createNewProject = () => {
+  // Under a new module file
   // currently selected project should populate in the input sections
   // dynamically creates the form when the 'edit' button is pressed
-  // if only one project is in the allOpenProjects array then automatically go to an editable form
+
+  function submitForm () {
+    // code to push the contents of the form to the allOpenProjects array on index.js
+  }
+
 
   const form = document.querySelector('#new-project-form');
 
@@ -56,6 +61,11 @@ const createNewProject = () => {
   submitButton.classList.add('form-button');
   submitButton.innerHTML = 'Submit Project';
   form.appendChild(submitButton);
+
+ 
+
+  submitButton.addEventListener('click', submitForm);
+
 
   // Reset button
   const resetButton = document.createElement('button');

@@ -36,3 +36,11 @@ th { border-bottom: 1px solid black; margin: 0; padding: 2px; }
 	display: inline-block;
 }
 
+.side-project-container:hover {
+	background-color: #d9ffcc;
+}
+
+.currentProject, .currentProject:hover  {
+	background-color: #008000;
+}
+
