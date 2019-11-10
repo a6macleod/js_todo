@@ -1,5 +1,7 @@
 h1, body { margin-top: 0; padding:0; }
 
+.hidden {display: none;}
+
 #top-bar {
 	background-color: #ff1a8c;
 	width: 100%;
@@ -22,6 +24,10 @@ h1, body { margin-top: 0; padding:0; }
 	left: 0;
 	overflow-x: hidden;
 	padding-top: 8em;
+}
+.side-bar {
+	display: inline-block;
+	margin-right: 1em;
 }
 
 th { border-bottom: 1px solid black; margin: 0; padding: 2px; }

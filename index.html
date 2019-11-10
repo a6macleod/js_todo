@@ -25,8 +25,6 @@
 
 		<div id="current-project">
 
-			<button class="edit-project">New Project</button>
-
 			<form id="new-project-form">
 <!--
 				<input type="text" id="form-header" class="form-input" value="default project">
@@ -36,28 +34,27 @@
 				<textarea name="" id="form-about" cols="30" rows="10" class="form-input"></textarea>
 -->
 			</form>
-			<h2 class="projectTitle">Project Title</h2>
-			<p class="dueDate">10/31/19</p>
+			<div class="display">
+				<h2 class="projectTitle"></h2>
+	
+					<h3 class="subheader dueDate-title"></h3>
+					<p class="dueDate"></p>
+	
+					<div class="priority"></div>
+					
+					<h3 class="subheader about-title"></h3>
+					<p class="about"></p>
+	
+					<div class="sublist-container">
+						<h3 class="subheader check-list-title">Check List:</h3>
+						<ul class="sublists">
+							
+						</ul>
+	
+				<button class="add-sublist-button">+</button>
 
-			<p class="about">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quidem, omnis obcaecati rem. Illo, suscipit distinctio veniam saepe mollitia nisi nulla, iure tempora culpa voluptate in, ad, maxime eaque iusto!</p>
-
-			<div class="sublists">
-				<ul class="sublist">
-					<li class="sublist">
-						<input type="checkbox" class="not-finished sublistItem">
-						<h4 class="sublistItem">Sublist One</h4>
-					</li>
-					<li class="sublist">
-						<input type="checkbox" class="not-finished sublistItem">
-						<h4 class="sublistItem">Sublist two</h4>
-					</li>
-					<li class="sublist">
-						<input type="checkbox" class="not-finished sublistItem">
-						<h4 class="sublistItem">Sublist three</h4>
-					</li>
-				</ul>
-			</div> <!-- end sublist -->
-
+				</div> <!-- end sublist -->
+			</div> <!-- end display -->
 		</div> <!-- end current-project -->
 
 	</div>
