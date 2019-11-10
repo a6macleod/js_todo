@@ -1,10 +1,34 @@
-const createNewProject = () => {
-  // Under a new module file
-  // currently selected project should populate in the input sections
-  // dynamically creates the form when the 'edit' button is pressed
+import { clearDisplay } from './clearDisplay.js'
+import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
+import { createProject } from './createProject'
+
+const projectForm = (allOpenProjects) => {
+
+  // clear existing display
+  clearDisplay();
 
   function submitForm () {
-    // code to push the contents of the form to the allOpenProjects array on index.js
+
+    const isPriority = () => {
+      checkbox.checked ? true : false
+    }
+
+    const formInfo = [formHeader.value, formDueDate.value, isPriority, formAbout.value];
+
+
+    const sampleProjectNext = () => {
+      const temp = createProject(fromInfo);
+      allOpenProjects.push(temp);
+      listAllProjectsSideBar(allOpenProjects);
+    }
+  }
+
+  function cancelForm () {
+    // code to cancel the form
+    while (form.firstChild) {
+      form.removeChild(form.firstChild);
+    }
+    listAllProjectsSideBar(allOpenProjects);
   }
 
 
@@ -21,7 +45,7 @@ const createNewProject = () => {
   formHeader.setAttribute('type','text');
   formHeader.id = 'form-header';
   formHeader.classList.add('form-input');
-  formHeader.setAttribute('value', 'default project title');
+  formHeader.setAttribute('value', '');
   formHeader.required = true;
   form.appendChild(formHeader);
 
@@ -37,6 +61,20 @@ const createNewProject = () => {
   formDueDate.id = 'form-due-date';
   formDueDate.classList.add('form-input');
   form.appendChild(formDueDate);
+
+  // complete check box
+  const formPriorityLabel = document.createElement('label');
+  formPriorityLabel.setAttribute('for', 'priority');
+  formPriorityLabel.classList.add('form-label');
+  formPriorityLabel.innerHTML = 'Priority';
+  form.appendChild(formPriorityLabel);
+
+  const checkbox = document.createElement('input');
+  checkbox.setAttribute('type', 'checkbox');
+  checkbox.classList.add('form-input');
+  checkbox.id = 'priority';
+  form.appendChild(checkbox);
+
 
   // About Project
   const formAboutLabel = document.createElement('label');
@@ -62,10 +100,6 @@ const createNewProject = () => {
   submitButton.innerHTML = 'Submit Project';
   form.appendChild(submitButton);
 
- 
-
-  submitButton.addEventListener('click', submitForm);
-
 
   // Reset button
   const resetButton = document.createElement('button');
@@ -83,6 +117,11 @@ const createNewProject = () => {
   cancelButton.innerHTML = 'Cancel';
   form.appendChild(cancelButton);
 
+  // event listeners
+  submitButton.addEventListener('click', submitForm);
+  resetButton.addEventListener('click', () => form.reset());
+  cancelButton.addEventListener('click', cancelForm);
+
 }
 
-export { createNewProject }
+export { projectForm }

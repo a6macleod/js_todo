@@ -30,7 +30,7 @@ const createProject = (sampleProject) => {
         aboutProject: about,
         priority: isPriority,
         projectIsComplete: false,
-        sublist: []
+        sublists: []
         };
     };
 
