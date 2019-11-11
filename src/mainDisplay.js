@@ -39,7 +39,10 @@ const mainDisplay = (allOpenProjects, projectId) => {
 
   // priority
   const priority = document.querySelector('.priority');
-  priority.innerHTML = '!';
+  if (currentProject.priority == true) {
+  priority.innerHTML = '!';  
+  }
+  
 
 
   // About Section

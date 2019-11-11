@@ -1,36 +1,9 @@
 import { clearDisplay } from './clearDisplay.js'
-import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
-import { createProject } from './createProject'
 
 const projectForm = (allOpenProjects) => {
 
   // clear existing display
   clearDisplay();
-
-  function submitForm () {
-
-    const isPriority = () => {
-      checkbox.checked ? true : false
-    }
-
-    const formInfo = [formHeader.value, formDueDate.value, isPriority, formAbout.value];
-
-
-    const sampleProjectNext = () => {
-      const temp = createProject(fromInfo);
-      allOpenProjects.push(temp);
-      listAllProjectsSideBar(allOpenProjects);
-    }
-  }
-
-  function cancelForm () {
-    // code to cancel the form
-    while (form.firstChild) {
-      form.removeChild(form.firstChild);
-    }
-    listAllProjectsSideBar(allOpenProjects);
-  }
-
 
   const form = document.querySelector('#new-project-form');
 
@@ -94,7 +67,7 @@ const projectForm = (allOpenProjects) => {
   // Buttons
   // Submit Button
   const submitButton = document.createElement('button');
-  submitButton.setAttribute('type', 'submit');
+  submitButton.setAttribute('type', 'button');
   submitButton.id = 'submit-button';
   submitButton.classList.add('form-button');
   submitButton.innerHTML = 'Submit Project';
@@ -116,11 +89,6 @@ const projectForm = (allOpenProjects) => {
   cancelButton.classList.add('form-button');
   cancelButton.innerHTML = 'Cancel';
   form.appendChild(cancelButton);
-
-  // event listeners
-  submitButton.addEventListener('click', submitForm);
-  resetButton.addEventListener('click', () => form.reset());
-  cancelButton.addEventListener('click', cancelForm);
 
 }
 

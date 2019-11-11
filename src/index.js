@@ -1,19 +1,14 @@
 import { createProject } from './createProject.js'
 import { newProject } from './newProject.js'
 import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
-//import { mainDisplay } from './mainDisplay.js'
-//import { addSubList } from './addSubList.js'
 
-
-//const editButton = document.querySelector('.edit-project');
 const newProjectButton = document.querySelector('#new-project-button');
 const sideBarProjects = document.querySelector('#project-list');
-//const addSubListButton = document.querySelector('.add-sublist-button');
-const allOpenProjects =  /*JSON.parse(localStorage.getToDo('toDo')) || */ [{
-    'projectId': 0,
+const allOpenProjects =  /*JSON.parse(localStorage.getItem('toDo')) || */ [{
+    'projectId': 1,
     'projectTitle': 'default project',
     'dueDate': "10/31/2019",
-    'priority': false,
+    'priority': true,
     'aboutProject': 'about this project',
     'projectIsComplete': false,
     'sublists': [ 
@@ -33,37 +28,43 @@ const allOpenProjects =  /*JSON.parse(localStorage.getToDo('toDo')) || */ [{
         'sublistComplete': false
       }
     ]
-  }
+  }, 
+  {
+      'projectId': 2,
+      'projectTitle': 'Project 2',
+      'dueDate': "11/31/2019",
+      'priority': false,
+      'aboutProject': 'about this project',
+      'projectIsComplete': false,
+      'sublists': []
+    },
+    {
+        'projectId': 3,
+        'projectTitle': 'Project 3',
+        'dueDate': "10/31/2019",
+        'priority': false,
+        'aboutProject': 'about this project',
+        'projectIsComplete': false,
+        'sublists': []
+      }
 ];
 const currentProject = allOpenProjects[0];
 
 
 // Event listeners
 newProjectButton.addEventListener('click', () => {
-  newProject(allOpenProjects)
+  newProject(allOpenProjects);
 });
 
-//editButton.addEventListener('click', newProject);
-
-/*addSubListButton.addEventListener('click', () => {
-  if (currentProject == {}){
-    currentProject = allOpenProjects[0];
-  } else {
-    addSubList(currentProject);
-  }
-});*/
-
-
-
-
-const sampleProject = ['New Project', '11/01/19', true, 'A long string about what this project will be about'];
+/* a sample project and how it was pushed
+const sampleProject = ['Sample', '11/01/19', true, 'A long string about what this project will be about'];
 
 const sampleProjectNext = () => {
-  const temp = createProject(sampleProject);
+  const temp = createProject(sampleProject, allOpenProjects );
   allOpenProjects.push(temp);
 }
-// add new project (replace this with a click from the "SAVE" button)
 sampleProjectNext();
+*/
 
 // initial loading of the side bar project list
 listAllProjectsSideBar(allOpenProjects);

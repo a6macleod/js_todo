@@ -1,4 +1,3 @@
- // lists the current projects on the side bar
 import { mainDisplay } from './mainDisplay.js'
 import { clearSideBar } from './clearSideBar.js'
 
@@ -7,9 +6,14 @@ const listAllProjectsSideBar = (allOpenProjects) => {
   clearSideBar();
   
   const sideBarProjects = document.querySelector('#project-list');
+
   let firstLoad = true;
 
 
+  function getId (event) {
+    const projectId = event.target.getAttribute('data-id');
+    return projectId;
+  }
 
   function updateHighlighting (projectId) {
     // remove old highlighting
@@ -28,11 +32,25 @@ const listAllProjectsSideBar = (allOpenProjects) => {
   };
 
   function clickSideBar (event) {
-    let projectId = event.target.getAttribute('data-id');
+    // seperate the remove button
+    if (event.target.innerHTML == 'Remove') {
+      return
+    }
+    let projectId = getId(event);
     updateDisplay(projectId);
     updateHighlighting(projectId);
   }
 
+  function removeProject (event) {
+    let projectId = getId(event);
+
+    for (let i = 0; i < allOpenProjects.length; i++) {
+      if (projectId == allOpenProjects[i].projectId) {
+        allOpenProjects.splice(i, 1);
+      }
+    }
+    listAllProjectsSideBar(allOpenProjects);
+  }
 
 
   for (let i = 0; i < allOpenProjects.length; i++) {
@@ -73,10 +91,12 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     deleteProjectButton.setAttribute('data-id', `${allOpenProjects[i].projectId}`);
     deleteProjectButton.innerHTML = 'Remove';
     container.appendChild(deleteProjectButton)
-
   }
 
+  const deleteProjectButton = document.querySelectorAll('.delete-project')
+
   sideBarProjects.addEventListener('click', clickSideBar);
+  deleteProjectButton.forEach(button => button.addEventListener('click', removeProject));
 }
 
 export { listAllProjectsSideBar }
