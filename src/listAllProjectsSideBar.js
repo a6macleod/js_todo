@@ -1,19 +1,10 @@
 import { mainDisplay } from './mainDisplay.js'
 import { clearSideBar } from './clearSideBar.js'
+import { find } from './find.js'
 
 const listAllProjectsSideBar = (allOpenProjects) => {
 
   clearSideBar();
-  
-  const sideBarProjects = document.querySelector('#project-list');
-
-  let firstLoad = true;
-
-
-  function getId (event) {
-    const projectId = event.target.getAttribute('data-id');
-    return projectId;
-  }
 
   function updateHighlighting (projectId) {
     // remove old highlighting
@@ -21,6 +12,7 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     allSideBarProjects.forEach(function(project) {
       project.classList.remove('currentProject')
       });
+    
     
     // set new selectedProject
     const clickedContainer = document.querySelector(`div[data-id="${projectId}"]`);
@@ -36,13 +28,13 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     if (event.target.innerHTML == 'Remove') {
       return
     }
-    let projectId = getId(event);
+    let projectId = find.getId(event);
     updateDisplay(projectId);
     updateHighlighting(projectId);
   }
 
   function removeProject (event) {
-    let projectId = getId(event);
+    let projectId = find.getId(event);
 
     for (let i = 0; i < allOpenProjects.length; i++) {
       if (projectId == allOpenProjects[i].projectId) {
@@ -53,6 +45,14 @@ const listAllProjectsSideBar = (allOpenProjects) => {
   }
 
 
+
+  // populate the project list
+
+  const sideBarProjects = document.querySelector('#project-list');
+  let firstLoad = true;
+
+
+  // div for each project
   for (let i = 0; i < allOpenProjects.length; i++) {
     const projectId = allOpenProjects[i].projectId;
     // project container
@@ -67,9 +67,7 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     }
     sideBarProjects.appendChild(container);
 
-
-
-    // complete check box
+    // completeness check box
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('data-id', `${allOpenProjects[i].projectId}`);
@@ -84,7 +82,7 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     headerTitle.innerHTML = allOpenProjects[i].projectTitle
     container.appendChild(headerTitle);
 
-    // delete
+    // delete project button
     const deleteProjectButton = document.createElement('button');
     deleteProjectButton.classList.add('delete-project');
     deleteProjectButton.classList.add('side-bar');
@@ -93,9 +91,12 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     container.appendChild(deleteProjectButton)
   }
 
-  const deleteProjectButton = document.querySelectorAll('.delete-project')
-
   sideBarProjects.addEventListener('click', clickSideBar);
+
+
+  // remove project action
+  const deleteProjectButton = document.querySelectorAll('.delete-project');
+
   deleteProjectButton.forEach(button => button.addEventListener('click', removeProject));
 }
 

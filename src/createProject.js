@@ -13,9 +13,8 @@ const createProject = (sampleProject, allOpenProjects) => {
 
   const id = calculateId(allOpenProjects);
   const title = sampleProject[0];
-  const date = sampleProject[1];
-  const isPriority = sampleProject[2];
-  const about = sampleProject[3];
+  const isPriority = sampleProject[1];
+  const about = sampleProject[2];
 
 
 
@@ -23,7 +22,6 @@ const createProject = (sampleProject, allOpenProjects) => {
       return {
         projectId: id,
         projectTitle: title,
-        dueDate: date,
         aboutProject: about,
         priority: isPriority,
         projectIsComplete: false,

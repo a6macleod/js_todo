@@ -1,17 +1,25 @@
+import { editProject } from './editProject.js'
+import { removeSublist } from './removeSublist.js'
+import { find } from './find.js'
+
 const mainDisplay = (allOpenProjects, projectId) => {
 
-  function findProjectInArray (clickedId) {
-    for (const project of allOpenProjects) {
-      if (clickedId == project.projectId) {
-        return project;
-      }
-    }
+
+  function editProjectController () {
+    editProject(currentProject, allOpenProjects);
+  }
+
+  function deleteSublist (event) {
+    removeSublist(event, currentProject, allOpenProjects);
   }
 
   const displayArea = document.querySelector('.display');
-  const currentProject = findProjectInArray(projectId);
+  const currentProject = find.findProjectInArray(projectId, allOpenProjects);
+
+
 
   // edit button
+
   // clear existing edit button
   const removeEditButton = document.querySelector('.edit-project');
   if (removeEditButton) {
@@ -23,27 +31,22 @@ const mainDisplay = (allOpenProjects, projectId) => {
   editButton.innerHTML = 'Edit Project';
   displayArea.insertBefore(editButton, displayArea.childNodes[0]);
 
+  editButton.addEventListener('click', editProjectController);
+
   
   // Header
   const header = document.querySelector('.projectTitle');
   header.innerHTML = currentProject.projectTitle;
 
 
-  // Due Date
-  const dueDateTitle = document.querySelector('.dueDate-title');
-  dueDateTitle.innerHTML = 'Due: ';
-
-  const dueDate = document.querySelector('.dueDate');
-  dueDate.innerHTML = currentProject.dueDate;
-
-
   // priority
   const priority = document.querySelector('.priority');
-  if (currentProject.priority == true) {
-  priority.innerHTML = '!';  
+  if (currentProject.priority === true) {
+    priority.innerHTML = '!';
+  } else {
+    priority.innerHTML = '';
   }
   
-
 
   // About Section
   const aboutTitle = document.querySelector('.about-title');
@@ -64,6 +67,7 @@ const mainDisplay = (allOpenProjects, projectId) => {
     sublists.removeChild(sublists.firstChild);
   }
 
+  // append sublist elements
   for (let sublist of currentProject.sublists) {
 
     // Li Element
@@ -77,6 +81,7 @@ const mainDisplay = (allOpenProjects, projectId) => {
     checkboxElement.setAttribute('type', 'checkbox');
     checkboxElement.setAttribute('data-subId', sublist.sublistId);
     checkboxElement.classList.add('not-finished');
+    checkboxElement.classList.add('sublistItem');
     
     if (checkboxElement.sublistComplete == true) {
       checkboxElement.setAttribute('checked', '');
@@ -88,15 +93,21 @@ const mainDisplay = (allOpenProjects, projectId) => {
     const subHeader = document.createElement('h4');
     subHeader.setAttribute('data-subId', sublist.sublistId);
     subHeader.classList.add('sublistHeader');
+    subHeader.classList.add('sublistItem');
     subHeader.innerHTML = sublist.sublistTitle;
     sublistElement.appendChild(subHeader);
 
     const deleteButton = document.createElement('button');
     deleteButton.setAttribute('data-subId', sublist.sublistId);
     deleteButton.classList.add('sublist-delete');
+    deleteButton.classList.add('sublistItem');
     deleteButton.innerHTML = 'Remove';
     sublistElement.appendChild(deleteButton);
   }
+
+  // delete button action
+  const deleteButton = document.querySelectorAll('.sublist-delete');
+  deleteButton.forEach(button => button.addEventListener('click', deleteSublist))
 }
 
 export { mainDisplay }

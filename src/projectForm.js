@@ -22,19 +22,6 @@ const projectForm = (allOpenProjects) => {
   formHeader.required = true;
   form.appendChild(formHeader);
 
-  // Project due date 
-  const formDueDateLabel = document.createElement('label');
-  formDueDateLabel.setAttribute('for', 'form-due-date');
-  formDueDateLabel.classList.add('form-label');
-  formDueDateLabel.innerHTML = 'Due Date';
-  form.appendChild(formDueDateLabel);
-
-  const formDueDate = document.createElement('input');
-  formDueDate.setAttribute('type', 'date');
-  formDueDate.id = 'form-due-date';
-  formDueDate.classList.add('form-input');
-  form.appendChild(formDueDate);
-
   // complete check box
   const formPriorityLabel = document.createElement('label');
   formPriorityLabel.setAttribute('for', 'priority');

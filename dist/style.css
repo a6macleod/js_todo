@@ -40,6 +40,7 @@ th { border-bottom: 1px solid black; margin: 0; padding: 2px; }
 
 .sublistItem {
 	display: inline-block;
+	margin-right: 1em;
 }
 
 .side-project-container:hover {

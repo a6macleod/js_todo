@@ -1,6 +1,8 @@
 const clearDisplay = () => {
   
   const displayArea = document.querySelector('.display');
+  
+
   // edit button
   const removeEditButton = document.querySelector('.edit-project');
   if (removeEditButton) {
@@ -10,13 +12,6 @@ const clearDisplay = () => {
   // Header
   const header = document.querySelector('.projectTitle');
   header.innerHTML = '';
-
-  // Due Date
-  const dueDateTitle = document.querySelector('.dueDate-title');
-  dueDateTitle.innerHTML = '';
-
-  const dueDate = document.querySelector('.dueDate');
-  dueDate.innerHTML = '';
 
 
   // priority

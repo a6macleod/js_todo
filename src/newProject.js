@@ -12,7 +12,6 @@ const newProject = (allOpenProjects) => {
   const cancelButton = document.querySelector('#cancel-button');
   const form = document.querySelector('#new-project-form');
   const formHeader = document.querySelector('#form-header');
-  const formDueDate = document.querySelector('#form-due-date');
   const checkbox = document.querySelector('#priority');
   const formAbout = document.querySelector('#form-about');
   // on save forms
@@ -31,10 +30,9 @@ const newProject = (allOpenProjects) => {
       const isPriority = () => {
         checkbox.checked ? true : false
       }
-      const temp = [formHeader.value, formDueDate.value, isPriority, formAbout.value];
+      const temp = [formHeader.value, isPriority, formAbout.value];
       const newObject = createProject(temp, allOpenProjects);
       allOpenProjects.push(newObject);
-      console.log(allOpenProjects);
       clearForm();
     }
 
