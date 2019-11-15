@@ -1,5 +1,6 @@
 import { find } from './find.js'
-import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
+import { updateLocalStorage } from './updateLocalStorage.js'
+import { mainDisplay } from './mainDisplay.js'
 
 const addSubList = (currentProject, allOpenProjects) => {
 
@@ -58,10 +59,6 @@ const addSubList = (currentProject, allOpenProjects) => {
     return newSublist;
   }
 
-  //function updateDisplay() {
-  //  updateCurrentProjectDisplay(currentProject);
-  //}
-
   function updateMainStorageArray (currentProject) {
     const index = find.findProjectIndex(currentProject, allOpenProjects);
     allOpenProjects[index] = currentProject;
@@ -73,24 +70,25 @@ const addSubList = (currentProject, allOpenProjects) => {
   }
 
   function saveSublist() {
-    const newSublist = generateSublistObject();
 
+    const newSublist = generateSublistObject();
     currentProject.sublists.push(newSublist);
 
     updateMainStorageArray(currentProject);
 
-    listAllProjectsSideBar(allOpenProjects);
+    // update main display not everything / stay on the display
+    mainDisplay(allOpenProjects, currentProject.projectId)
+
+    updateLocalStorage(allOpenProjects);
 
     removeSublistForm();
   }
+
 
   createSublistForm();
 
   const submitButton = document.querySelector('#sublist-submit-button');
   submitButton.addEventListener('click', saveSublist);
-
-
-  ///// Work on updating the allOpenProjects array and the currentProject variable and the display
 };
 
 export { addSubList };

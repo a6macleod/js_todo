@@ -2,6 +2,7 @@ import { projectForm } from './projectForm.js'
 import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
 import { createProject } from './createProject'
 import { find } from './find.js'
+import { updateLocalStorage } from './updateLocalStorage.js'
 
 
 const editProject = (currentProject, allOpenProjects) => {
@@ -13,6 +14,7 @@ const editProject = (currentProject, allOpenProjects) => {
       form.removeChild(form.firstChild);
     }
     listAllProjectsSideBar(allOpenProjects);
+    updateLocalStorage(allOpenProjects);
   }
 
   function submitForm () {

@@ -2,7 +2,7 @@ import { newProject } from './newProject.js'
 import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
 
 const newProjectButton = document.querySelector('#new-project-button');
-const allOpenProjects =  /*JSON.parse(localStorage.getItem('toDo')) || */ [{
+const allOpenProjects =  JSON.parse(localStorage.getItem('allOpenProjects')) || [{
     'projectId': 1,
     'projectTitle': 'default project',
     'priority': true,
@@ -58,7 +58,6 @@ const allOpenProjects =  /*JSON.parse(localStorage.getItem('toDo')) || */ [{
         ]
     }
 ];
-
 
 // Event listeners
 newProjectButton.addEventListener('click', () => {

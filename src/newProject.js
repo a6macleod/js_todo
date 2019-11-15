@@ -2,6 +2,7 @@ import { projectForm } from './projectForm.js'
 import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
 import { createProject } from './createProject'
 import { clearDisplay } from './clearDisplay.js'
+import { updateLocalStorage } from './updateLocalStorage.js'
 
 const newProject = (allOpenProjects) => {
   // Open forms
@@ -14,9 +15,7 @@ const newProject = (allOpenProjects) => {
   const formHeader = document.querySelector('#form-header');
   const checkbox = document.querySelector('#priority');
   const formAbout = document.querySelector('#form-about');
-  // on save forms
-    // push form values to allOpenProjectsArray
-    // call to update listAllProjectsSideBar
+
 
     function clearForm () {
       // code to clear the form
@@ -24,6 +23,7 @@ const newProject = (allOpenProjects) => {
         form.removeChild(form.firstChild);
       }
       listAllProjectsSideBar(allOpenProjects);
+      updateLocalStorage(allOpenProjects);
     }
 
     function submitForm () {
@@ -40,7 +40,6 @@ const newProject = (allOpenProjects) => {
     resetButton.addEventListener('click', () => form.reset());
     cancelButton.addEventListener('click', clearForm);
     submitButton.addEventListener('click', submitForm);
-
 }
 
 export { newProject }

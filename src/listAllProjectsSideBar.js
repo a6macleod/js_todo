@@ -1,6 +1,7 @@
 import { mainDisplay } from './mainDisplay.js'
 import { clearSideBar } from './clearSideBar.js'
 import { find } from './find.js'
+import { updateLocalStorage } from './updateLocalStorage.js'
 
 const listAllProjectsSideBar = (allOpenProjects) => {
 
@@ -42,6 +43,17 @@ const listAllProjectsSideBar = (allOpenProjects) => {
       }
     }
     listAllProjectsSideBar(allOpenProjects);
+    updateLocalStorage(allOpenProjects);
+  }
+
+  function isCompleteCheck (event) {
+    const projectId = find.getId(event);
+    const targetProject = find.findProjectInArray (projectId, allOpenProjects);
+
+    targetProject.projectIsComplete = !targetProject.projectIsComplete;
+
+    allOpenProjects[find.findProjectIndex(targetProject, allOpenProjects)] = targetProject;
+    updateLocalStorage(allOpenProjects);
   }
 
 
@@ -72,12 +84,17 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('data-id', `${allOpenProjects[i].projectId}`);
     checkbox.classList.add('side-bar');
+    checkbox.classList.add('is-project-complete-check');  
+    if (allOpenProjects[i].projectIsComplete) {
+      checkbox.setAttribute('checked', '');
+    }
     container.appendChild(checkbox);
 
     // project title
     const headerTitle = document.createElement('h4');
     headerTitle.classList.add('side-bar-list');
     headerTitle.classList.add('side-bar');
+    
     headerTitle.setAttribute('data-id', `${allOpenProjects[i].projectId}`);
     headerTitle.innerHTML = allOpenProjects[i].projectTitle
     container.appendChild(headerTitle);
@@ -93,6 +110,10 @@ const listAllProjectsSideBar = (allOpenProjects) => {
 
   sideBarProjects.addEventListener('click', clickSideBar);
 
+  // project is complete checkbox
+  const allCheckBoxes = document.querySelectorAll('.is-project-complete-check');
+
+  allCheckBoxes.forEach(box => box.addEventListener('change', isCompleteCheck));
 
   // remove project action
   const deleteProjectButton = document.querySelectorAll('.delete-project');

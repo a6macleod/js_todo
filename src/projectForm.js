@@ -54,7 +54,7 @@ const projectForm = (allOpenProjects) => {
   // Buttons
   // Submit Button
   const submitButton = document.createElement('button');
-  submitButton.setAttribute('type', 'button');
+  submitButton.setAttribute('type', 'submit');
   submitButton.id = 'submit-button';
   submitButton.classList.add('form-button');
   submitButton.innerHTML = 'Submit Project';
