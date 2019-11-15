@@ -1,6 +1,7 @@
 import { editProject } from './editProject.js'
 import { removeSublist } from './removeSublist.js'
 import { find } from './find.js'
+import { addSubList } from './addSubList.js'
 
 const mainDisplay = (allOpenProjects, projectId) => {
 
@@ -108,6 +109,22 @@ const mainDisplay = (allOpenProjects, projectId) => {
   // delete button action
   const deleteButton = document.querySelectorAll('.sublist-delete');
   deleteButton.forEach(button => button.addEventListener('click', deleteSublist))
+
+  // add more subists button
+  const createAddSublistButton = document.createElement('button');
+  createAddSublistButton.setAttribute('data-Id', projectId);
+  createAddSublistButton.classList.add('add-sublist-button');
+  createAddSublistButton.classList.add('sublistItem');
+  createAddSublistButton.innerHTML = '+';
+  sublists.appendChild(createAddSublistButton);
+  
+  // add sublist action
+  const addSublistButton = document.querySelector('.add-sublist-button');
+  addSublistButton.addEventListener('click', () => {
+    createAddSublistButton.remove();
+    addSubList(currentProject, allOpenProjects);
+  })
+
 }
 
 export { mainDisplay }

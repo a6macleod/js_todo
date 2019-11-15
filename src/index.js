@@ -21,7 +21,7 @@ const allOpenProjects =  /*JSON.parse(localStorage.getItem('toDo')) || */ [{
           'sublistComplete': false
         },
         {
-          'sublistId': 3,
+          'sublistId': 2,
           'sublistTitle': 'Project 1 sublist 3',
           'sublistComplete': false
         }
