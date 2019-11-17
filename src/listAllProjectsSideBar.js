@@ -96,6 +96,18 @@ const listAllProjectsSideBar = () => {
     }
     container.appendChild(checkbox);
 
+    // priority
+    const priority = document.createElement('p');
+    priority.setAttribute('data-id', `${allProjects[i].projectId}`);
+    priority.classList.add('side-bar');
+    priority.classList.add('is-project-priority');
+    if (allProjects[i].priority === true) {
+      priority.innerHTML = '🌈';
+    } else {
+      priority.innerHTML = '';
+    }
+    container.appendChild(priority);
+
     // project title
     const headerTitle = document.createElement('h4');
     headerTitle.classList.add('side-bar-list');
@@ -106,12 +118,12 @@ const listAllProjectsSideBar = () => {
     container.appendChild(headerTitle);
 
     // delete project button
-    const deleteProjectButton = document.createElement('button');
-    deleteProjectButton.classList.add('delete-project');
-    deleteProjectButton.classList.add('side-bar');
-    deleteProjectButton.setAttribute('data-id', `${allProjects[i].projectId}`);
-    deleteProjectButton.innerHTML = 'Remove';
-    container.appendChild(deleteProjectButton)
+    const deleteIcon = document.createElement('p');
+    deleteIcon.classList.add('delete-project');
+    deleteIcon.classList.add('side-bar');
+    deleteIcon.setAttribute('data-id', `${allProjects[i].projectId}`);
+    deleteIcon.innerHTML = '🗑';
+    container.appendChild(deleteIcon)
   }
 
   sideBarProjects.addEventListener('click', clickSideBar);
@@ -122,9 +134,9 @@ const listAllProjectsSideBar = () => {
   allCheckBoxes.forEach(box => box.addEventListener('change', isCompleteCheck));
 
   // remove project action
-  const deleteProjectButton = document.querySelectorAll('.delete-project');
+  const deleteIcon = document.querySelectorAll('.delete-project');
 
-  deleteProjectButton.forEach(button => button.addEventListener('click', removeProject));
+  deleteIcon.forEach(button => button.addEventListener('click', removeProject));
 }
 
 export { listAllProjectsSideBar }

@@ -43,7 +43,7 @@ const mainDisplay = (projectId) => {
   // priority
   const priority = document.querySelector('.priority');
   if (currentProject.priority === true) {
-    priority.innerHTML = '!';
+    priority.innerHTML = '🌈 HIGH PRIORITY! 🌈';
   } else {
     priority.innerHTML = '';
   }
@@ -98,17 +98,17 @@ const mainDisplay = (projectId) => {
     subHeader.innerHTML = sublist.sublistTitle;
     sublistElement.appendChild(subHeader);
 
-    const deleteButton = document.createElement('button');
-    deleteButton.setAttribute('data-subId', sublist.sublistId);
-    deleteButton.classList.add('sublist-delete');
-    deleteButton.classList.add('sublistItem');
-    deleteButton.innerHTML = 'Remove';
-    sublistElement.appendChild(deleteButton);
+    const deleteIcon = document.createElement('p');
+    deleteIcon.setAttribute('data-subId', sublist.sublistId);
+    deleteIcon.classList.add('sublist-delete');
+    deleteIcon.classList.add('sublistItem');
+    deleteIcon.innerHTML = '🗑';
+    sublistElement.appendChild(deleteIcon);
   }
 
   // delete button action
-  const deleteButton = document.querySelectorAll('.sublist-delete');
-  deleteButton.forEach(button => button.addEventListener('click', deleteSublist))
+  const deleteIcon = document.querySelectorAll('.sublist-delete');
+  deleteIcon.forEach(button => button.addEventListener('click', deleteSublist))
 
   // add more subists button
   const createAddSublistButton = document.createElement('button');
