@@ -1,12 +1,12 @@
 import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
 import { find } from './find.js'
+import { displayController } from './displayController.js'
 
-const removeSublist = (event, currentProject, allOpenProjects) => {
-
+const removeSublist = (event, currentProject) => {
 
   const sublistId = event.target.getAttribute('data-subid');
-  const projectIndex = find.findProjectIndex(currentProject, allOpenProjects);
-  const sublists = allOpenProjects[projectIndex].sublists;
+  const projectIndex = find.findProjectIndex(currentProject);
+  const sublists = displayController.allProjects[projectIndex].sublists;
   const sublistIndex = findSublistIndex(sublistId);
 
   function findSublistIndex(sublistId) {
@@ -19,7 +19,7 @@ const removeSublist = (event, currentProject, allOpenProjects) => {
 
   function removeSublist (event) {
     sublists.splice(sublistIndex, 1);
-    listAllProjectsSideBar(allOpenProjects);
+    listAllProjectsSideBar();
   }
 
 

@@ -1,6 +1,9 @@
 import { clearDisplay } from './clearDisplay.js'
+import { displayController } from './displayController.js'
 
-const projectForm = (allOpenProjects) => {
+const projectForm = () => {
+
+  const allProjects = displayController.allProjects;
 
   // clear existing display
   clearDisplay();

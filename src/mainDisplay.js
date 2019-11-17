@@ -2,21 +2,21 @@ import { editProject } from './editProject.js'
 import { removeSublist } from './removeSublist.js'
 import { find } from './find.js'
 import { addSubList } from './addSubList.js'
+import { displayController } from './displayController.js'
 
-const mainDisplay = (allOpenProjects, projectId) => {
+const mainDisplay = (projectId) => {
 
 
   function editProjectController () {
-    editProject(currentProject, allOpenProjects);
+    editProject(currentProject);
   }
 
   function deleteSublist (event) {
-    removeSublist(event, currentProject, allOpenProjects);
+    removeSublist(event, currentProject);
   }
 
   const displayArea = document.querySelector('.display');
-  const currentProject = find.findProjectInArray(projectId, allOpenProjects);
-
+  const currentProject = find.findProjectInArray(projectId);
 
 
   // edit button
@@ -122,7 +122,7 @@ const mainDisplay = (allOpenProjects, projectId) => {
   const addSublistButton = document.querySelector('.add-sublist-button');
   addSublistButton.addEventListener('click', () => {
     createAddSublistButton.remove();
-    addSubList(currentProject, allOpenProjects);
+    addSubList(currentProject);
   })
 
 }

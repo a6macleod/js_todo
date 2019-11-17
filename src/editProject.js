@@ -3,9 +3,9 @@ import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
 import { createProject } from './createProject'
 import { find } from './find.js'
 import { updateLocalStorage } from './updateLocalStorage.js'
+import { displayController } from './displayController.js'
 
-
-const editProject = (currentProject, allOpenProjects) => {
+const editProject = (currentProject) => {
 
   projectForm();
 
@@ -13,8 +13,8 @@ const editProject = (currentProject, allOpenProjects) => {
     while (form.firstChild) {
       form.removeChild(form.firstChild);
     }
-    listAllProjectsSideBar(allOpenProjects);
-    updateLocalStorage(allOpenProjects);
+    listAllProjectsSideBar();
+    updateLocalStorage();
   }
 
   function submitForm () {
@@ -22,10 +22,10 @@ const editProject = (currentProject, allOpenProjects) => {
       checkbox.checked ? true : false
     }
     const temp = [formHeader.value, isPriority, formAbout.value];
-    const newObject = createProject(temp, allOpenProjects);
+    const newObject = createProject(temp);
     
-    const indexSpot = find.findProjectIndex(currentProject, allOpenProjects);
-    allOpenProjects[indexSpot] = newObject;
+    const indexSpot = find.findProjectIndex(currentProject);
+    displayController.allProjects[indexSpot] = newObject;
     clearForm();
   }
 

@@ -1,6 +1,8 @@
-const updateLocalStorage = (allOpenProjects) => {
+import { displayController } from './displayController.js'
 
-  localStorage.setItem('allOpenProjects', JSON.stringify(allOpenProjects));
+const updateLocalStorage = () => {
+
+  localStorage.setItem('allOpenProjects', JSON.stringify(displayController.allProjects));
 
 }
 

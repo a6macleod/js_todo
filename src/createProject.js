@@ -1,17 +1,20 @@
+import { displayController } from './displayController.js'
 
-const createProject = (sampleProject, allOpenProjects) => {
+const createProject = (sampleProject) => {
 
-  function calculateId(allOpenProjects) {
+  const allProjects = displayController.allProjects;
+
+  function calculateId() {
     let id = 0;
-    for (let i = 0; i < allOpenProjects.length; i++) {
-      if (id <= allOpenProjects[i].projectId) {
-        id = allOpenProjects[i].projectId + 1;
+    for (let i = 0; i < allProjects.length; i++) {
+      if (id <= allProjects[i].projectId) {
+        id = allProjects[i].projectId + 1;
       }
     }
     return id;
   }
 
-  const id = calculateId(allOpenProjects);
+  const id = calculateId();
   const title = sampleProject[0];
   const isPriority = sampleProject[1];
   const about = sampleProject[2];

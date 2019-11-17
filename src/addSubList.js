@@ -1,8 +1,9 @@
 import { find } from './find.js'
 import { updateLocalStorage } from './updateLocalStorage.js'
 import { mainDisplay } from './mainDisplay.js'
+import { displayController } from './displayController.js'
 
-const addSubList = (currentProject, allOpenProjects) => {
+const addSubList = (currentProject) => {
 
   const sublistArray = currentProject.sublists;  
   const sublists = document.querySelector('.sublists');
@@ -60,8 +61,8 @@ const addSubList = (currentProject, allOpenProjects) => {
   }
 
   function updateMainStorageArray (currentProject) {
-    const index = find.findProjectIndex(currentProject, allOpenProjects);
-    allOpenProjects[index] = currentProject;
+    const index = find.findProjectIndex(currentProject);
+    displayController.allProjects[index] = currentProject;
   }
 
   function removeSublistForm () {
@@ -77,9 +78,9 @@ const addSubList = (currentProject, allOpenProjects) => {
     updateMainStorageArray(currentProject);
 
     // update main display not everything / stay on the display
-    mainDisplay(allOpenProjects, currentProject.projectId)
+    mainDisplay(currentProject.projectId)
 
-    updateLocalStorage(allOpenProjects);
+    updateLocalStorage();
 
     removeSublistForm();
   }

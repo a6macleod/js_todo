@@ -2,8 +2,13 @@ import { mainDisplay } from './mainDisplay.js'
 import { clearSideBar } from './clearSideBar.js'
 import { find } from './find.js'
 import { updateLocalStorage } from './updateLocalStorage.js'
+import { displayController } from './displayController.js'
 
-const listAllProjectsSideBar = (allOpenProjects) => {
+
+
+const listAllProjectsSideBar = () => {
+
+  const allProjects = displayController.allProjects;
 
   clearSideBar();
 
@@ -21,7 +26,7 @@ const listAllProjectsSideBar = (allOpenProjects) => {
   }
 
   function updateDisplay (projectId) {
-    mainDisplay(allOpenProjects, projectId);
+    mainDisplay(projectId);
   };
 
   function clickSideBar (event) {
@@ -37,23 +42,23 @@ const listAllProjectsSideBar = (allOpenProjects) => {
   function removeProject (event) {
     let projectId = find.getId(event);
 
-    for (let i = 0; i < allOpenProjects.length; i++) {
-      if (projectId == allOpenProjects[i].projectId) {
-        allOpenProjects.splice(i, 1);
+    for (let i = 0; i < allProjects.length; i++) {
+      if (projectId == allProjects[i].projectId) {
+        allProjects.splice(i, 1);
       }
     }
-    listAllProjectsSideBar(allOpenProjects);
-    updateLocalStorage(allOpenProjects);
+    listAllProjectsSideBar(allProjects);
+    updateLocalStorage(allProjects);
   }
 
   function isCompleteCheck (event) {
     const projectId = find.getId(event);
-    const targetProject = find.findProjectInArray (projectId, allOpenProjects);
+    const targetProject = find.findProjectInArray (projectId, allProjects);
 
     targetProject.projectIsComplete = !targetProject.projectIsComplete;
 
-    allOpenProjects[find.findProjectIndex(targetProject, allOpenProjects)] = targetProject;
-    updateLocalStorage(allOpenProjects);
+    allProjects[find.findProjectIndex(targetProject, allProjects)] = targetProject;
+    updateLocalStorage(allProjects);
   }
 
 
@@ -65,8 +70,9 @@ const listAllProjectsSideBar = (allOpenProjects) => {
 
 
   // div for each project
-  for (let i = 0; i < allOpenProjects.length; i++) {
-    const projectId = allOpenProjects[i].projectId;
+  for (let i = 0; i < allProjects.length; i++) {
+    const allProjects = displayController.allProjects;
+    const projectId = allProjects[i].projectId;
     // project container
     const container = document.createElement('div');
     container.setAttribute('data-id', `${projectId}`);
@@ -82,10 +88,10 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     // completeness check box
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('data-id', `${allOpenProjects[i].projectId}`);
+    checkbox.setAttribute('data-id', `${allProjects[i].projectId}`);
     checkbox.classList.add('side-bar');
     checkbox.classList.add('is-project-complete-check');  
-    if (allOpenProjects[i].projectIsComplete) {
+    if (allProjects[i].projectIsComplete) {
       checkbox.setAttribute('checked', '');
     }
     container.appendChild(checkbox);
@@ -95,15 +101,15 @@ const listAllProjectsSideBar = (allOpenProjects) => {
     headerTitle.classList.add('side-bar-list');
     headerTitle.classList.add('side-bar');
     
-    headerTitle.setAttribute('data-id', `${allOpenProjects[i].projectId}`);
-    headerTitle.innerHTML = allOpenProjects[i].projectTitle
+    headerTitle.setAttribute('data-id', `${allProjects[i].projectId}`);
+    headerTitle.innerHTML = allProjects[i].projectTitle
     container.appendChild(headerTitle);
 
     // delete project button
     const deleteProjectButton = document.createElement('button');
     deleteProjectButton.classList.add('delete-project');
     deleteProjectButton.classList.add('side-bar');
-    deleteProjectButton.setAttribute('data-id', `${allOpenProjects[i].projectId}`);
+    deleteProjectButton.setAttribute('data-id', `${allProjects[i].projectId}`);
     deleteProjectButton.innerHTML = 'Remove';
     container.appendChild(deleteProjectButton)
   }
