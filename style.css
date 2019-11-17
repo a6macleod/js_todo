@@ -1,30 +1,28 @@
-h1, body { margin-top: 0; padding:0; }
+h1, body  { margin: 0; padding: 0; height: 100%; width: 100%; color: #00131a;  }
+h1, .currentProject h4 { color: #ffffff; }
+body { background-color: #ccf2ff; }
 
 .hidden {display: none;}
 
+.side-project-container:hover {
+	background-color: #d9ffcc;
+}
+
+#top-bar, .currentProject, .currentProject:hover { background-color: #008fb3; }
+
 #top-bar {
-	background-color: #ff1a8c;
 	width: 100%;
-	height: 8em;
+	height: 3em;
 	position: relative;
 	margin: 0;
-	padding: 0;
+	padding: 15px;
 	z-index: 2;
 }
+#content {  }
 
-#new-project-button { margin: 0; }
+#new-project-button { margin: 10px 0; }
 
-#side-bar {
-	background-color: #ffff80;
-	width: 30%;
-	height: 100%;
-	position: fixed;
-	z-index: 1;
-	top: 0;	
-	left: 0;
-	overflow-x: hidden;
-	padding-top: 8em;
-}
+
 .side-bar {
 	display: inline-block;
 	margin-right: 1em;
@@ -32,22 +30,48 @@ h1, body { margin-top: 0; padding:0; }
 
 th { border-bottom: 1px solid black; margin: 0; padding: 2px; }
 
-#current-project { 
-	width: 70%; 
-	left: 30%; 
-	position: absolute;
-}
-
 .sublistItem {
 	display: inline-block;
 	margin-right: 1em;
 }
 
-.side-project-container:hover {
-	background-color: #d9ffcc;
+.is-project-complete-check, #side-bar h3, #new-project-button { margin-left: 1em; }
+
+.delete-project, .sublist-delete {
+	border-radius: 10px;
+	color: #0086b3;
 }
 
-.currentProject, .currentProject:hover  {
-	background-color: #008000;
+button { cursor: pointer; }
+
+.delete-project:hover, .sublist-delete:hover {
+	/*transform: scale(1.2);*/
+	transition: 0.4s;
+	transform: rotate(0.9turn);
+	cursor: pointer;
 }
+.sublistForm { margin-right: 0.8em; }
+
+#side-bar, #current-project {
+	position: relative;
+	display: inline-block;
+}
+#current-project { margin-left: 1em; width: 50%; }
+
+#side-bar {
+	width: 40%;
+}
+.edit-project { margin-top: 10px; }
+
+#side-bar {
+	border-right: 2px solid #3399ff;	
+	display: inline-block;
+	position: relative;
+	height: 100vh;
+	margin-right: 10px;
+	padding: 1px;
+	float: left; 
+}
+
+li { list-style: none; }
 
