@@ -3,6 +3,7 @@ import { clearSideBar } from './clearSideBar.js'
 import { find } from './find.js'
 import { updateLocalStorage } from './updateLocalStorage.js'
 import { displayController } from './displayController.js'
+import { clearDisplay } from './clearDisplay.js'
 
 
 
@@ -10,6 +11,7 @@ const listAllProjectsSideBar = () => {
 
   const allProjects = displayController.allProjects;
 
+  clearDisplay();
   clearSideBar();
 
   function updateHighlighting (projectId) {
@@ -30,8 +32,9 @@ const listAllProjectsSideBar = () => {
   };
 
   function clickSideBar (event) {
+    clearDisplay();
     // seperate the remove button
-    if (event.target.innerHTML == 'Remove') {
+    if (event.target.innerHTML == '🗑') {
       return
     }
     let projectId = find.getId(event);
@@ -47,8 +50,8 @@ const listAllProjectsSideBar = () => {
         allProjects.splice(i, 1);
       }
     }
-    listAllProjectsSideBar(allProjects);
-    updateLocalStorage(allProjects);
+    listAllProjectsSideBar();
+    updateLocalStorage();
   }
 
   function isCompleteCheck (event) {
@@ -114,7 +117,7 @@ const listAllProjectsSideBar = () => {
     headerTitle.classList.add('side-bar');
     
     headerTitle.setAttribute('data-id', `${allProjects[i].projectId}`);
-    headerTitle.innerHTML = allProjects[i].projectTitle
+    headerTitle.innerHTML = allProjects[i].projectTitle;
     container.appendChild(headerTitle);
 
     // delete project button

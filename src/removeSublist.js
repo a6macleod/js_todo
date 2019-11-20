@@ -1,6 +1,8 @@
 import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
 import { find } from './find.js'
 import { displayController } from './displayController.js'
+import { mainDisplay } from './mainDisplay.js'
+import { updateLocalStorage } from './updateLocalStorage.js'
 
 const removeSublist = (event, currentProject) => {
 
@@ -17,9 +19,16 @@ const removeSublist = (event, currentProject) => {
     }
   }
 
+  function render () {
+    // update main display not everything / stay on the display
+    mainDisplay(currentProject.projectId)
+
+    updateLocalStorage();
+  }
+
   function removeSublist (event) {
     sublists.splice(sublistIndex, 1);
-    listAllProjectsSideBar();
+    render();
   }
 
 

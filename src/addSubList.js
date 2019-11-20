@@ -20,12 +20,13 @@ const addSubList = (currentProject) => {
     sublistHeaderLabel.innerHTML = 'Checklist Item';
     sublistContainer.appendChild(sublistHeaderLabel);
 
-    const sublistHeader = document.createElement('input');
-    sublistHeader.setAttribute('type', 'text');
+    const sublistHeader = document.createElement('textarea');
+    sublistHeader.setAttribute('cols', '25');
+    sublistHeader.setAttribute('rows', '1');
     sublistHeader.id = 'sublist-header';
     sublistHeader.classList.add('form-input');
     sublistHeader.classList.add('sublistForm');
-    sublistHeader.setAttribute('value', 'New Item');
+    sublistHeader.setAttribute('value', '');
     sublistHeader.required = true;
     sublistContainer.appendChild(sublistHeader);
 
@@ -37,7 +38,18 @@ const addSubList = (currentProject) => {
     submitButton.classList.add('sublistForm');
     submitButton.innerHTML = 'Submit Item';
     sublistContainer.appendChild(submitButton);
+  
+
+    // cancel sublist save button
+    const cancelButton = document.createElement('button');
+    cancelButton.setAttribute('type', 'button');
+    cancelButton.id = 'sublist-cancel-button';
+    cancelButton.classList.add('form-button');
+    cancelButton.classList.add('sublistForm');
+    cancelButton.innerHTML = 'Cancel';
+    sublistContainer.appendChild(cancelButton);
   }
+
 
   function generateId() {
     let newId = 0;
@@ -77,6 +89,14 @@ const addSubList = (currentProject) => {
 
     updateMainStorageArray(currentProject);
 
+    render();
+  }
+
+  function cancelSublist () {
+    removeSublistForm();
+  }
+
+  function render () {
     // update main display not everything / stay on the display
     mainDisplay(currentProject.projectId)
 
@@ -90,6 +110,9 @@ const addSubList = (currentProject) => {
 
   const submitButton = document.querySelector('#sublist-submit-button');
   submitButton.addEventListener('click', saveSublist);
+
+  const cancelButton = document.querySelector('#sublist-cancel-button');
+  cancelButton.addEventListener('click', render);
 };
 
 export { addSubList };

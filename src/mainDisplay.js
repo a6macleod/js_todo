@@ -3,9 +3,11 @@ import { removeSublist } from './removeSublist.js'
 import { find } from './find.js'
 import { addSubList } from './addSubList.js'
 import { displayController } from './displayController.js'
+import { clearDisplay } from './clearDisplay.js'
 
 const mainDisplay = (projectId) => {
 
+  clearDisplay();
 
   function editProjectController () {
     editProject(currentProject);
@@ -47,6 +49,32 @@ const mainDisplay = (projectId) => {
   } else {
     priority.innerHTML = '';
   }
+
+  // toggle priority
+
+  const togglePriority = document.createElement('button');
+  togglePriority.setAttribute('data-Id', projectId);
+  togglePriority.classList.add('toggle-priority-button');
+  togglePriority.innerHTML = currentProject.priority === true? '✔' : '!'
+  priority.appendChild(togglePriority);
+  
+  // toggle priority action
+  const togglePriorityButton = document.querySelector('.toggle-priority-button');
+  togglePriorityButton.addEventListener('click', () => {
+    const projectIndex = find.findProjectIndex(find.findProjectInArray(projectId));
+    displayController.allProjects[projectIndex].priority = 
+    !displayController.allProjects[projectIndex].priority;
+    
+    const sideBarPriority = document.querySelector(`p[data-id="${projectId}"]`);
+
+    if (displayController.allProjects[projectIndex].priority === true) {
+        sideBarPriority.innerHTML = '🌈';
+      } else {
+        sideBarPriority.innerHTML = '';
+      }
+
+    mainDisplay(projectId);
+  });
   
 
   // About Section

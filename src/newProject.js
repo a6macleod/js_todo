@@ -3,10 +3,13 @@ import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
 import { createProject } from './createProject'
 import { clearDisplay } from './clearDisplay.js'
 import { updateLocalStorage } from './updateLocalStorage.js'
+import { displayController } from './displayController.js'
 
-const newProject = (allOpenProjects) => {
+const newProject = () => {
+  const allProjects = displayController.allProjects;
+
   // Open forms
-  projectForm(allOpenProjects);
+  projectForm(allProjects);
 
   const submitButton = document.querySelector('#submit-button');
   const resetButton = document.querySelector('#reset-button');
@@ -17,29 +20,36 @@ const newProject = (allOpenProjects) => {
   const formAbout = document.querySelector('#form-about');
 
 
-    function clearForm () {
-      // code to clear the form
-      while (form.firstChild) {
-        form.removeChild(form.firstChild);
-      }
-      listAllProjectsSideBar(allOpenProjects);
-      updateLocalStorage(allOpenProjects);
+  function clearForm () {
+    // code to clear the form
+    while (form.firstChild) {
+      form.removeChild(form.firstChild);
     }
+    updateLocalStorage();
+    listAllProjectsSideBar();
+  }
 
-    function submitForm () {
-      const isPriority = () => {
-        checkbox.checked ? true : false
-      }
-      const temp = [formHeader.value, isPriority, formAbout.value];
-      const newObject = createProject(temp, allOpenProjects);
-      allOpenProjects.push(newObject);
-      clearForm();
+  function isChecked () {
+    if (checkbox.checked == true) {
+      return true
+    } else {
+      return false
     }
+  }    
 
-    // event listeners
-    resetButton.addEventListener('click', () => form.reset());
-    cancelButton.addEventListener('click', clearForm);
-    submitButton.addEventListener('click', submitForm);
+  function submitForm () {
+    const isPriority = isChecked();
+    const temp = [formHeader.value, isPriority, formAbout.value];
+    const newObject = createProject(temp, allProjects);
+    displayController.allProjects.push(newObject);
+    console.log(checkbox);
+    clearForm();
+  }
+
+  // event listeners
+  resetButton.addEventListener('click', () => form.reset());
+  cancelButton.addEventListener('click', clearForm);
+  submitButton.addEventListener('click', submitForm);
 }
 
 export { newProject }

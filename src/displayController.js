@@ -1,10 +1,10 @@
 const displayController = (() => {
 
-  const allProjects =  JSON.parse(localStorage.getItem('allProjects')) || [{
+  const allProjects =  JSON.parse(localStorage.getItem('projects')) || [{
       'projectId': 1,
-      'projectTitle': 'default project',
+      'projectTitle': 'Project 1',
       'priority': true,
-      'aboutProject': 'about this project',
+      'aboutProject': 'Project 1 is very important',
       'projectIsComplete': false,
       'sublists': 
         [ 
@@ -29,7 +29,7 @@ const displayController = (() => {
       'projectId': 2,
       'projectTitle': 'Project 2',
       'priority': false,
-      'aboutProject': 'about this project',
+      'aboutProject': 'Project 2 is not so important',
       'projectIsComplete': false,
       'sublists': 
         [
@@ -44,7 +44,7 @@ const displayController = (() => {
         'projectId': 3,
         'projectTitle': 'Project 3',
         'priority': false,
-        'aboutProject': 'about this project',
+        'aboutProject': 'Project 3 is not important',
         'projectIsComplete': false,
         'sublists': 
           [

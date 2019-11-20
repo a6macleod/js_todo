@@ -1,4 +1,15 @@
 const clearDisplay = () => {
+
+  const form = document.querySelector('#new-project-form');
+
+  function clearForm () {
+    // code to clear the form
+    while (form.firstChild) {
+      form.removeChild(form.firstChild);
+    }
+  }
+
+  clearForm();
   
   const displayArea = document.querySelector('.display');
   

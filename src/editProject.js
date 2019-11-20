@@ -17,10 +17,16 @@ const editProject = (currentProject) => {
     updateLocalStorage();
   }
 
-  function submitForm () {
-    const isPriority = () => {
-      checkbox.checked ? true : false
+  function isChecked () {
+    if (checkbox.checked == true) {
+      return true
+    } else {
+      return false
     }
+  } 
+
+  function submitForm () {
+    const isPriority = isChecked();
     const temp = [formHeader.value, isPriority, formAbout.value];
     const newObject = createProject(temp);
     
