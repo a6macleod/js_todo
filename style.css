@@ -1,5 +1,8 @@
 h1, body  { margin: 0; padding: 0; height: 100%; width: 100%; color: #00131a;  }
-h1, .currentProject h4 { color: #ffffff; }
+h1 { color: #ffffff; }
+
+.currentProject h4 { color: #002933; }
+
 body { background-color: #ccf2ff; }
 
 .hidden {display: none;}
@@ -8,7 +11,9 @@ body { background-color: #ccf2ff; }
 	background-color: #d9ffcc;
 }
 
-#top-bar, .currentProject, .currentProject:hover { background-color: #008fb3; }
+#top-bar { background-color: #008fb3; }
+
+.currentProject, .currentProject:hover { background-color: #00ccff; }
 
 #top-bar {
 	width: 100%;
@@ -61,7 +66,7 @@ button { cursor: pointer; }
 #side-bar {
 	width: 40%;
 }
-.edit-project { margin-top: 10px; }
+.edit-project { margin-top: 0.1em; }
 
 #side-bar {
 	border-right: 2px solid #3399ff;	
@@ -75,3 +80,12 @@ button { cursor: pointer; }
 
 li { list-style: none; }
 
+.form-label { margin-right: 1em; }
+
+form { margin-top: 1em; }
+
+.formDiv { margin-top: 2em; }
+
+.form-button { margin-right: 1em; }
+
+.toggle-priority-button { margin-left: 1.5em; }
