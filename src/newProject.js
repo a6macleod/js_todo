@@ -1,9 +1,9 @@
-import { projectForm } from './projectForm.js'
-import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
-import { createProject } from './createProject'
-import { clearDisplay } from './clearDisplay.js'
-import { updateLocalStorage } from './updateLocalStorage.js'
-import { displayController } from './displayController.js'
+import { projectForm } from "./projectForm.js";
+import { listAllProjectsSideBar } from "./listAllProjectsSideBar.js";
+import { createProject } from "./createProject";
+import { clearDisplay } from "./clearDisplay.js";
+import { updateLocalStorage } from "./updateLocalStorage.js";
+import { displayController } from "./displayController.js";
 
 const newProject = () => {
   const allProjects = displayController.allProjects;
@@ -11,16 +11,15 @@ const newProject = () => {
   // Open forms
   projectForm(allProjects);
 
-  const submitButton = document.querySelector('#submit-button');
-  const resetButton = document.querySelector('#reset-button');
-  const cancelButton = document.querySelector('#cancel-button');
-  const form = document.querySelector('#new-project-form');
-  const formHeader = document.querySelector('#form-header');
-  const checkbox = document.querySelector('#priority');
-  const formAbout = document.querySelector('#form-about');
+  const submitButton = document.querySelector("#submit-button");
+  const resetButton = document.querySelector("#reset-button");
+  const cancelButton = document.querySelector("#cancel-button");
+  const form = document.querySelector("#new-project-form");
+  const formHeader = document.querySelector("#form-header");
+  const checkbox = document.querySelector("#priority");
+  const formAbout = document.querySelector("#form-about");
 
-
-  function clearForm () {
+  function clearForm() {
     // code to clear the form
     while (form.firstChild) {
       form.removeChild(form.firstChild);
@@ -29,15 +28,15 @@ const newProject = () => {
     listAllProjectsSideBar();
   }
 
-  function isChecked () {
+  function isChecked() {
     if (checkbox.checked == true) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
-  }    
+  }
 
-  function submitForm () {
+  function submitForm() {
     const isPriority = isChecked();
     const temp = [formHeader.value, isPriority, formAbout.value];
     const newObject = createProject(temp, allProjects);
@@ -47,9 +46,9 @@ const newProject = () => {
   }
 
   // event listeners
-  resetButton.addEventListener('click', () => form.reset());
-  cancelButton.addEventListener('click', clearForm);
-  submitButton.addEventListener('click', submitForm);
-}
+  resetButton.addEventListener("click", () => form.reset());
+  cancelButton.addEventListener("click", clearForm);
+  submitButton.addEventListener("click", submitForm);
+};
 
-export { newProject }
+export { newProject };

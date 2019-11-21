@@ -1,11 +1,11 @@
-import { newProject } from './newProject.js'
-import { listAllProjectsSideBar } from './listAllProjectsSideBar.js'
-import { displayController } from './displayController.js'
+import { newProject } from "./newProject.js";
+import { listAllProjectsSideBar } from "./listAllProjectsSideBar.js";
+import { displayController } from "./displayController.js";
 
-const newProjectButton = document.querySelector('#new-project-button');
+const newProjectButton = document.querySelector("#new-project-button");
 
 // Event listeners
-newProjectButton.addEventListener('click', () => {
+newProjectButton.addEventListener("click", () => {
   newProject(displayController.allProjects);
 });
 

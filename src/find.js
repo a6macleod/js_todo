@@ -1,15 +1,14 @@
-import { displayController } from './displayController.js'
+import { displayController } from "./displayController.js";
 
 const find = (() => {
+  const allProjects = displayController.allProjects;
 
-    const allProjects = displayController.allProjects
-
-  function getId (event) {
-    const projectId = event.target.getAttribute('data-id');
+  function getId(event) {
+    const projectId = event.target.getAttribute("data-id");
     return projectId;
   }
 
-  function findProjectInArray (clickedId) {
+  function findProjectInArray(clickedId) {
     for (const project of allProjects) {
       if (clickedId == project.projectId) {
         return project;
@@ -17,16 +16,15 @@ const find = (() => {
     }
   }
 
-  function findProjectIndex (currentProject) {
+  function findProjectIndex(currentProject) {
     for (let i = 0; i < allProjects.length; i++) {
       if (currentProject.projectId == allProjects[i].projectId) {
         return i;
       }
     }
   }
- 
- return { getId, findProjectInArray, findProjectIndex }
 
- })();
+  return { getId, findProjectInArray, findProjectIndex };
+})();
 
- export { find }
+export { find };

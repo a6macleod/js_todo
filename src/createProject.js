@@ -1,7 +1,6 @@
-import { displayController } from './displayController.js'
+import { displayController } from "./displayController.js";
 
-const createProject = (sampleProject) => {
-
+const createProject = sampleProject => {
   const allProjects = displayController.allProjects;
 
   function calculateId() {
@@ -19,20 +18,18 @@ const createProject = (sampleProject) => {
   const isPriority = sampleProject[1];
   const about = sampleProject[2];
 
-
-
   const newProject = () => {
-      return {
-        projectId: id,
-        projectTitle: title,
-        aboutProject: about,
-        priority: isPriority,
-        projectIsComplete: false,
-        sublists: []
-        };
+    return {
+      projectId: id,
+      projectTitle: title,
+      aboutProject: about,
+      priority: isPriority,
+      projectIsComplete: false,
+      sublists: []
     };
+  };
 
-return newProject();
-}
+  return newProject();
+};
 
 export { createProject };
